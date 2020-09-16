@@ -1,0 +1,18 @@
+<h2>レシピ一覧</h2>
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>料理名</th>(全<%= @recipes.count %>件)
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @recipes.each do |recipe| %>
+		<tr>
+			<%= attachment_image_tag(@recipe, :image, size: "180x150") %>
+			<td><%= recipe.name %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
