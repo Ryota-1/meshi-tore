@@ -1,0 +1,53 @@
+<div class="container-fluid">
+
+  <div class="background-color">
+    <div class="row">
+	   <div class="col-md-12">
+
+      <h2 class="mt-12 d-inline-block">会員情報編集</h2>
+
+  <% if current_user == @user %>
+  <%= form_for(@user, url: user_path) do |f| %>
+
+      <div class="field">
+          <%= f.label "画像" %>
+          <%= f.attachment_field :profile_image, class: "user_image" %>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-4 control-label text-right">名前</label>
+          <div class="col-sm-5 mr-sm form-inline">
+            <p><%= f.text_field :name, class:"form-control"%></p>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-4 control-label text-right">自己紹介</label>
+          <div class="col-sm-5 mr-sm form-inline">
+            <p><%= f.text_area :introduction, class:"form-control"%></p>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-4 text-right">
+          <label for="email"><p>メールアドレス</p></label></div>
+            <div class="col-sm-5 mr-sm">
+              <p><%= f.email_field :email, class:"form-control"%></p>
+          </div>
+      </div>
+
+   <!--  <span class="fa fa-user form-control-icon" aria-hidden="true"></span> -->
+
+    <div class="col-md-12 text-center">
+    <%= f.submit "編集内容を保存する", class:"btn btn-primary w-30" %></div>
+  <% end %>
+  <% end %>
+   </div>
+    <div class="w-100"></div>
+    <div class="col-11 mr-sm text-right">
+    <%= link_to "退会する", users_withdraw_confirm_path, class:"btn btn-danger " %>
+    <%= link_to "前に戻る",user_path(current_user), class:"btn btn-info m-2 w-30" %></div>
+    </div>
+
+  </div>
+</div>

@@ -2,12 +2,11 @@
 	<div class="col-xs-12">
 		<h1 class="head-line title_h1 text-center">レシピ新規投稿</h1>
 
-		<%= form_for(@recipe, url: users_recipes_path) do |f| %>
+		<%= form_for(@recipe, url: users_recipes_path, method: :post) do |f| %>
           <div class="col-xs-4 col-xs-offset-1">
           	<div class="item-image">
-          		<%= attachment_image_tag @recipe, :image, class: "img-square", fallback: "no_image.jpg", size:"300x300" %>
           	</div><br>
-          	<%= f.attachment_field :image, placeholder: "画像" %>
+          	<%= f.attachment_field :image %>
           </div>
           <div class="col-xs-6">
 			<h4>料理名</h4>

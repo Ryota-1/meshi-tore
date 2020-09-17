@@ -1,5 +1,6 @@
 class Users::RecipesController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_genres
 
   def new
@@ -7,13 +8,21 @@ class Users::RecipesController < ApplicationController
   end
 
   def create
-  	@recipe = Recipe.new(recipe_params)
-  	@recipe.save
-  	redirect_to users_recipes_path
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
+    if @recipe.save
+      redirect_to users_recipes_path
+    else
+      render :new
+    end
   end
 
   def index
   	@recipes = Recipe.all
+  end
+
+  def show
+  	@recipe = Recipe.find(params[:id])
   end
 
   def edit
@@ -34,7 +43,7 @@ class Users::RecipesController < ApplicationController
   private
 
   def recipe_params
-  	params.require(:recipe).permit(:name, :ingredient, :how_to_cook, :pfc, :image_id)
+  	params.require(:recipe).permit(:name, :ingredient, :how_to_cook, :pfc, :image, :genre_id, :user_id)
   end
 
   def set_genres

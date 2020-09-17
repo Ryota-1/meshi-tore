@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="background-color">
+  <div class="row">
+
+	  <div class="col-md-12">
+      <h2 class="mt-5 d-inline-block">マイページ</h2>
+      <td><%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2 ml-4"><h4><strong>登録情報</strong></h4></div>
+          <div class="col"><%= link_to "編集する", edit_user_path,class: "btn btn-primary w-25" %>
+            <%= link_to "パスワードを変更する",edit_user_registration_path(current_user),class: "btn btn-success w-25" %></div>
+        </div>
+
+      <div class="col-12 ml-5 mt-5">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="table-active col-xs-2">氏名</td>
+                    <td class="col-xs-8"><p><%= @user.name %></p></td>
+                </tr>
+                <tr>
+                    <td class="table-active">自己紹介</td>
+                    <td><p><%= @user.introduction %></p></td>
+                </tr>
+                <tr>
+                    <td class="table-active">メールアドレス</td>
+                    <td><p><%= @user.email %></p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+</div>

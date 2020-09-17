@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="background-color">
+<h2 class="head-line title_h2 text-center">レシピ編集</h2>
+<div class="row">
+
+  <%= form_for(@recipe, url: users_recipe_path, method: :patch, class: "form-horizontal") do |f| %>
+
+    <div class="col-xs-4 h-100">
+      <div class="img_field">
+        <%= attachment_image_tag(@recipe, :image, size: "250x180") %>
+      </div>
+      <div class="form-group">
+	      <%= f.attachment_field :image, class: " image" %>
+      </div>
+    </div>
+
+    <div class="col-xs-8 h-100">
+      <div class="form-edit">
+      <h4>料理名</h4>
+      <%= f.text_field :name %>
+
+      <h4>材料</h4>
+      <%= f.text_area :ingredient %>
+
+      <h4>作り方</h4>
+      <%= f.text_area :how_to_cook %>
+
+      <h4>PFC</h4>
+      <%= f.text_field :pfc %>
+
+      <h4>ジャンル</h4>
+      <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
+
+      </div>
+      <div class="actions">
+	      <%= f.submit "変更を保存", class: "btn btn-primary pull-right" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
+</div>
+</div>

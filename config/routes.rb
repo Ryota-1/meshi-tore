@@ -18,6 +18,12 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :recipes
+    get "/:id/withdraw_confirm" => "users#withdraw_confirm", as: "withdraw_confirm"
+    patch "/:id/withdraw" => "users#withdraw", as: "withdraw"
+  end
+
+  scope module: 'users' do
+    resources :users
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
