@@ -15,3 +15,61 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+ }
+ li{
+	list-style: none;
+ }
+ header{
+  width: 100vw;
+  background-size: cover;
+}
+.header_flex {
+	display: flex;
+	height: 110px;
+	align-items: center;
+	width: 100%;
+}
+.site-title{
+  font-family: fantasy;
+  font-weight: bold;
+  font-size: 62px;
+  color: rgba(0, 0, 0, 0);
+  text-shadow: 3px 3px 0 #cd5;
+  -webkit-text-stroke: 1px #888;
+  text-stroke: 2px #888;
+  padding: 0 0 5px;
+}
+.header_flex nav {
+	margin-left: auto;
+ }
+.header_flex ul {
+	display: flex;
+}
+.header_flex ul li {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.user-name{
+  font-weight: bold;
+	margin-top: 10px;
+  color: #000;
+  font-size: 16px;
+  background-color: rgba(255,255,255,0.6);
+}
+.genre {
+	min-height: 500px;
+}
+.genre-name {
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 15px;
+}

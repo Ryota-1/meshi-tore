@@ -9,12 +9,9 @@
           <p style="font-size: 20px;"><strong>作り方<strong><br><%= @recipe.how_to_cook %></p>
           <p style="font-size: 20px;"><strong>PFC<strong><br><%= @recipe.pfc %></p>
         </div>
-        <% if @recipe.user == current_user %>
           <div>
-            <p><%= link_to "編集する", edit_users_recipe_path(@recipe), class: "btn-sm btn-success" %></p>
             <p><%= link_to "削除する", users_recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></p>
           </div>
-        <% end %>
       </div>
     </div>
   </div>

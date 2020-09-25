@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="background-color">
+	    	<div class="row">
+	    		<div class="col-xs-2">
+	    	</div>
+	 		<div class="col-xs-8">
+	    		<h3 class="customer-title-show">
+	    		<strong><%= @user.name %>の会員詳細</strong>
+	        	</h3>
+    				<div class="edit">
+					    <table class="table table-borderless">
+					    	<tbody>
+					    		<tr>
+									<th scope="row">会員ID</th>
+					    			<td>
+					    				<%= @user.id %>
+					    				<span class ="status">
+					    				<!-- true=退会済み　false=有効　-->
+					    				<% if @user.is_deleted == true %>
+											退会済み
+										<% elsif @user.is_deleted == false %>
+											有効
+										<% end %>
+										</span>
+									</td>
+					    		</tr>
+					    		<tr>
+					    			<th scope="row">名前</th>
+					    			<td><%= @user.name%>
+					    			</td>
+					    		</tr>
+					    		<tr>
+					    			<th scope="row">紹介文</th>
+					    			<td><%= @user.introduction %>
+					    			</td>
+					    		</tr>
+					    		<tr>
+					    			<th scope="row">メールアドレス</th>
+					    			<td><%= @user.email%>
+					    			</td>
+					    		</tr>
+					    	</tbody>
+					    </table>
+   						<%= link_to "編集する",edit_admins_user_path(@user),class: "btn btn-info"%>
+   					 </div>
+				</div>
+			</div>
+	</div>
+</div>

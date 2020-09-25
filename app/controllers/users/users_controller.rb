@@ -2,9 +2,13 @@ class Users::UsersController < ApplicationController
 
   before_action :authenticate_user!
 
+  def index
+    @users = User.all
+  end
+
   def show
   	@user = User.find(params[:id])
-  	@user = current_user
+    @recipes = @user.recipes
   end
 
   def withdraw
@@ -35,13 +39,6 @@ class Users::UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image, :email)
-  end
-
-  def correct_user
-  	user = User.find(params[:id])
-  	if current_user != user
-  		redirect_to new_user_registration_path
-  	end
+  	params.require(:user).permit(:name, :introduction, :profile_image, :email, :is_deleted)
   end
 end

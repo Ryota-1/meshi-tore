@@ -1,26 +1,30 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+    <div class="user-login aaa col-md-6 offset-md-3">
+      <h2 class="login-text">ユーザーはこちらからログイン</h2>
+      <div class="loginform">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: 'メールアドレス', size:50 %></br>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+          <%= f.password_field :password, autocomplete: "current-password",placeholder: 'パスワード', size:50 %></br>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="sign-swich">
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name) %>
+            <% end %>
+
+            <div class="actions">
+              <%= f.submit "ログイン",class:"btn btn-primary w-15" %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="sign-link">
+          <p>登録がお済みでない方</p>
+          <%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

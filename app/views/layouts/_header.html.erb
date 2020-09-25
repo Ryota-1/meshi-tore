@@ -5,37 +5,56 @@
 
 		<% if admin_signed_in? %>
 			<%= link_to admins_genres_path do %>
-			<h1 class="shop-title">飯トレ</h1>
+			<h1 class="site-title">飯トレ</h1>
 			<% end %>
 		<% else %>
 			<%= link_to root_path do %>
-			<h1 class="shop-title">飯トレ</h1>
+			<h1 class="site-title">飯トレ</h1>
 			<% end %>
 		<% end %>
 
 	</nav>
 	<nav>
 		<ul class="navbar navbar-right">
-			<!-- カスタマーがログインしている時 -->
+			<!-- ユーザーがログインしている時 -->
 			<% if user_signed_in? %>
+                <li class="user-name">
+					ようこそ、<%= current_user.name  %> 様！
+				</li>
 
 				<li>
 					<%= link_to "マイページ", user_path(current_user), class: "btn btn-default" %>
 				</li>
-
+                <li>
+					<%= link_to "レシピ一覧", users_recipes_path, class: "btn btn-default" %>
+				</li>
+				<li>
+					<%= link_to "会員一覧", users_path, class: "btn btn-default" %>
+				</li>
 				<li>
 					<%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-default" %>
 				</li>
 			<% elsif admin_signed_in? %>
 			<!-- 管理者がログインしている時 -->
+			    <li>
+					<%= link_to "会員一覧", admins_users_path, class: "btn btn-default" %>
+				</li>
+				<li>
+					<%= link_to "レシピ一覧", admins_recipes_path, class: "btn btn-default" %>
+				</li>
 				<li>
 					<%= link_to "ジャンル一覧", admins_genres_path, class: "btn btn-default" %>
 				</li>
 				<li>
-					<%= link_to "ログアウト", destroy_admins_session_path, method: :delete, class: "btn btn-default" %>
+					<%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default" %>
 				</li>
 			<% else %>
 			<!-- ログインしてない時 -->
+			    <li>
+					<%= link_to "About", homes_about_path, class: "btn btn-default" %>
+				<li>
+					<%= link_to "レシピ一覧", users_recipes_path, class: "btn btn-default" %>
+				</li>
 				<li>
 					<%= link_to "新規登録", new_user_registration_path, class: "btn btn-default" %>
 				</li>

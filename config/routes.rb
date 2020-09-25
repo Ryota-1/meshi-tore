@@ -2,12 +2,16 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get 'homes/top' => 'homes#top'
+  get 'homes/about' => 'homes#about'
+
   devise_for :admins, controllers: {
   	sessions: 'admins/sessions'
   }
 
   namespace :admins do
   	resources :genres
+    resources :users
+    resources :recipes
   end
 
   devise_for :users, controllers: {
@@ -17,7 +21,11 @@ Rails.application.routes.draw do
   }
 
   namespace :users do
-    resources :recipes
+    resources :recipes do
+      member do
+        get :genre_recipes
+      end
+    end
     get "/:id/withdraw_confirm" => "users#withdraw_confirm", as: "withdraw_confirm"
     patch "/:id/withdraw" => "users#withdraw", as: "withdraw"
   end

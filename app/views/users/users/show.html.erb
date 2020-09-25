@@ -2,19 +2,22 @@
   <div class="background-color">
   <div class="row">
 
-	  <div class="col-md-12">
-      <h2 class="mt-5 d-inline-block">マイページ</h2>
-      <td><%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+	  <div class="col-xs-10 offset-1">
+      <h2 class="mt-5 d-inline-block">会員情報</h2>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2 ml-4"><h4><strong>登録情報</strong></h4></div>
-          <div class="col"><%= link_to "編集する", edit_user_path,class: "btn btn-primary w-25" %>
-            <%= link_to "パスワードを変更する",edit_user_registration_path(current_user),class: "btn btn-success w-25" %></div>
+      <div>
+        <% if current_user == @user %>
+        <div>
+          <div><%= link_to "編集する", edit_user_path,class: "btn btn-primary" %>
+            <%= link_to "パスワードを変更する",edit_user_registration_path(current_user),class: "btn btn-success" %>
+          <%= link_to "レシピ新規投稿", new_users_recipe_path, class: "btn btn-warning" %>
+          </div>
         </div>
+        <% end %>
 
-      <div class="col-12 ml-5 mt-5">
+      <div class="col-12 mt-5">
         <table class="table table-bordered">
+            <div><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></div>
             <tbody>
                 <tr>
                     <td class="table-active col-xs-2">氏名</td>
@@ -24,16 +27,40 @@
                     <td class="table-active">自己紹介</td>
                     <td><p><%= @user.introduction %></p></td>
                 </tr>
-                <tr>
-                    <td class="table-active">メールアドレス</td>
-                    <td><p><%= @user.email %></p></td>
-                </tr>
             </tbody>
         </table>
+      </div>
+      </div>
     </div>
-    </div>
+    <div class="col-xs-10 offset-1">
+    <h2>投稿レシピ一覧</h2>
+    <!--books一覧 -->
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th></th>
+          <th>料理名</th>
+          <th>ジャンル</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-    </div>
+      <tbody>
+        <% @recipes.each do |recipe| %>
+        <tr>
+          <td>
+            <%= link_to user_path(recipe.user) do %>
+            <%= attachment_image_tag(recipe.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+            <% end %>
+          </td>
+          <td><%= link_to recipe.name, users_recipe_path(recipe), class: "recipe_#{recipe.id}" %></td>
+          <td><%= recipe.genre.name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <!--books一覧 -->
   </div>
-</div>
+  </div>
+  </div>
 </div>
