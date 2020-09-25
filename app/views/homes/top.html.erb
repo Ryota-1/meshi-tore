@@ -1,3 +1,44 @@
-<div>
-	<h1>ようこそ飯トレへ</h1>
+<div class="container">
+  <div class="background-color">
+    <div class="row">
+      <%= render 'layouts/genre_search', genres: @genres %>
+      <div class="col-xs-9">
+        <div class="bg_top">
+          <div class="bg_top2">
+            <p class="font-text">
+              ようこそ、飯トレへ<br>
+              <br>
+              <br>
+            </p>
+          </div>
+        </div>
+        <br>
+        <h4 class="recommendation"> オススメ レシピ </h4><br>
+        <div class="row">
+          <% @recipes.each do |recipe| %>
+            <% if recipe.genre.is_active == true %>
+            <div class="recipe-container">
+
+            <%= link_to users_recipe_path(recipe.id), class: "btn-link", :style=>"color:#0099FF;" do %>
+            <div class="img_field">
+            <%= attachment_image_tag(recipe, :image, size: "180x130") %>
+            </div>
+            <p class="recipe-name">
+              <%= recipe.name %>
+            </p>
+            <% end %>
+
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10"></div>
+      <div class="col-xs-2">
+        <p class="motto"><%= link_to "もっと見る", users_recipes_path %></p>
+      </div>
+    </div>
+  </div>
 </div>
