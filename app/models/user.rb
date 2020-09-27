@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :recipes
+  has_many :favorites
+  has_many :recipe_comments
   attachment :profile_image
 
   def active_for_authentication?

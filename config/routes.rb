@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       member do
         get :genre_recipes
       end
+      resource :recipe_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
     get "/:id/withdraw_confirm" => "users#withdraw_confirm", as: "withdraw_confirm"
     patch "/:id/withdraw" => "users#withdraw", as: "withdraw"

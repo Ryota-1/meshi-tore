@@ -24,6 +24,8 @@ class Users::RecipesController < ApplicationController
 
   def show
   	@recipe = Recipe.find(params[:id])
+    @recipe_comment = RecipeComment.new
+    @recipe_comments = @recipe.recipe_comments
   end
 
   def edit
@@ -32,6 +34,7 @@ class Users::RecipesController < ApplicationController
 
   def update
   	@recipe = Recipe.find(params[:id])
+    @recipe.user_id = current_user.id
   	@recipe.update(recipe_params)
   	redirect_to users_recipe_path(@recipe.id)
   end

@@ -1,0 +1,12 @@
+<td>
+  <% if recipe.favorited_by?(current_user) %>
+    <%= link_to users_recipe_favorites_path(recipe, redirect_id: 0), method: :delete, remote: true do %>
+      <span class="glyphicon glyphicon-heart"><%= recipe.favorites.count%></span>
+    <% end %>
+  <% else %>
+    <%= link_to users_recipe_favorites_path(recipe, redirect_id: 0), method: :post, remote: true do %>
+      <span class="glyphicon glyphicon-heart-empty"><%= recipe.favorites.count %></span>
+    <% end %>
+  <% end %>
+</td>
+<td>コメント数：<%= recipe.recipe_comments.count %></td>

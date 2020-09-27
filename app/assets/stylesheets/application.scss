@@ -24,18 +24,25 @@
   box-sizing: border-box;
   font-family: monospace;
  }
+
+body{
+  background: image-url('back2.jpg')
+}
+
+.background-color{
+  background-size: contain;
+}
+
  li{
 	list-style: none;
  }
  header{
-  width: 100vw;
   background-size: cover;
 }
 .header_flex {
 	display: flex;
 	height: 110px;
 	align-items: center;
-	width: 100%;
 }
 .site-title{
   font-family: fantasy;
@@ -65,7 +72,7 @@
   background-color: rgba(255,255,255,0.6);
 }
 .genre {
-	min-height: 500px;
+	min-height: 300px;
 }
 .genre-name {
   color: #000;

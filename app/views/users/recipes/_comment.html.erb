@@ -1,0 +1,14 @@
+<% recipe_comments.each do |book_comment| %> <!-- コメント一覧 -->
+  <tr>
+    <td>
+      <%= link_to user_path(recipe_comment.user), class: "user_#{recipe_comment.user.id}" do %>
+        <%= attachment_image_tag recipe_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+        <%= recipe_comment.user.name %>
+      <% end %>
+    </td>
+    <td><%= recipe_comment.comment %></td>
+    <% if recipe_comment.user == current_user %>
+      <td><%= link_to 'Destroy', recipe_recipe_comments_path(recipe_comment), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+    <% end %>
+  </tr>
+<% end %>
