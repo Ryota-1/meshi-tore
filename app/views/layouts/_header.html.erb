@@ -18,6 +18,13 @@
 		<ul class="navbar navbar-right">
 			<!-- ユーザーがログインしている時 -->
 			<% if user_signed_in? %>
+			　　<li class="search-item">
+				<%= search_form_for @search, url: users_recipes_path do |f| %>
+    				<% f.label :name_cont　%>
+    				<%= f.search_field :name_cont, placeholder: "レシピを検索" %>
+    				<%= f.submit "検索" %>
+				<% end %>
+			    </li>
                 <li class="user-name">
 					ようこそ、<%= current_user.name  %> 様！
 				</li>
@@ -50,6 +57,13 @@
 				</li>
 			<% else %>
 			<!-- ログインしてない時 -->
+			　　<li class="search-item">
+				<%= search_form_for @search, url: users_recipes_path do |f| %>
+    				<% f.label :name_cont %>
+    				<%= f.search_field :name_cont, placeholder: "レシピを検索" %>
+    				<%= f.submit "検索" %>
+				<% end %>
+			    </li>
 			    <li>
 					<%= link_to "About", homes_about_path, class: "btn btn-default" %>
 				<li>

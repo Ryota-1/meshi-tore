@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :recipes
   has_many :favorites
-  has_many :recipe_comments
+  has_many :recipe_comments, dependent: :destroy
   attachment :profile_image
 
   def active_for_authentication?

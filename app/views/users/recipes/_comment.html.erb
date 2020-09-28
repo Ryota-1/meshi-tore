@@ -1,4 +1,4 @@
-<% recipe_comments.each do |book_comment| %> <!-- コメント一覧 -->
+<% recipe_comments.each do |_comment| %> <!-- コメント一覧 -->
   <tr>
     <td>
       <%= link_to user_path(recipe_comment.user), class: "user_#{recipe_comment.user.id}" do %>

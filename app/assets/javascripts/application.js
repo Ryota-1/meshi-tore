@@ -11,9 +11,16 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
 //= require turbolinks
 //= require jquery
-//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+document.addEventListener("turbolinks:load", function () {
+    $(function () {
+        $('.slide').slick({
+            dots: true,
+            autoplay : true,
+            autoplaySpeed :1500,
+        });
+    });
+})

@@ -6,9 +6,10 @@
         <div class="bg_top">
           <div class="bg_top2">
             <p class="font-text">
-              ようこそ、飯トレへ<br>
-              <br>
-              <br>
+              ようこそ、飯トレへ！<br>
+              このサイトは、筋トレ、ダイエットをしている人向けのレシピ投稿サイトです。<br>
+              会員でない方もレシピの閲覧はできますが、<br>
+              投稿にはユーザー登録が必要です。
             </p>
           </div>
         </div>
@@ -23,9 +24,7 @@
             <div class="img_field">
             <%= attachment_image_tag(recipe, :image, size: "180x130") %>
             </div>
-            <p class="recipe-name">
-              <%= recipe.name %>
-            </p>
+            <p class="recipes-name"><strong><%= recipe.name %></strong> by <%= recipe.user.name %></p>
             <% end %>
 
             <% end %>
@@ -37,7 +36,9 @@
     <div class="row">
       <div class="col-xs-10"></div>
       <div class="col-xs-2">
-        <p class="motto"><%= link_to "もっと見る", users_recipes_path %></p>
+        <%= link_to users_recipes_path do %>
+          <p class="motto"><%= "もっと見る" %></p>
+        <% end %>
       </div>
     </div>
   </div>

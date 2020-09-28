@@ -2,7 +2,15 @@
   <div class="background-color">
     <div class="row">
       <div class="col-md-9 mt-3">
-        <div class="col-md-5 mt-5"><%= attachment_image_tag(@recipe, :image, size: "340x280" ) %></div>
+        <div class="col-md-5 mt-5"><%= attachment_image_tag(@recipe, :image, size: "340x280" ) %>
+        <% if user_signed_in? %>
+          <table class='iine-table'>
+            <tr class="recipe_<%= @recipe.id %>">
+              <%= render 'like', recipe: @recipe %>
+            </tr>
+          </table>
+        <% end %>
+        </div>
         <div class="col-md-5 mt-5 recipe-show">
           <h3 style="font-size: 30px;"><strong>料理名<br><%= @recipe.name %><strong></h3>
           <p style="font-size: 20px;"><strong>材料<strong><br><%= @recipe.ingredient %></p>
@@ -16,22 +24,6 @@
           </div>
         <% end %>
       </div>
-      <% if user_signed_in? %>
-      <table class='table'>
-      <tr class="recipe_<%= @recipe.id %>">
-        <%= render 'like', recipe: @recipe %>
-      </tr>
-      </table>
-      <table class="show-tb comment_<%= @recipe.id %>">
-      <%= render 'comment', recipe_comments: @recipe.recipe_comments %>
-      </table>
-      <div class="comment-form">
-        <%= form_with url: users_recipe_path, model:[@recipe, @recipe_comment], data: {remote: true} do |f| %>
-          <%= f.text_area :comment, size: "90x5" %>
-          <%= f.submit '送信' %>
-        <% end %>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>

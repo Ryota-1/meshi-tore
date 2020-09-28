@@ -1,3 +1,31 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.bg_top {
+  width:790px;
+  height:300px;
+  margin-top: 20px;
+  background-image: url(top.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 50px 200px;
+}
+
+.bg-top2 {
+  margin: auto;
+  width: 50px;
+  height: 150px;
+  padding: 30px
+}
+
+.bg_top2 p {
+  font-size: 16px;
+  text-align: center;
+  line-height: 240%;
+  background-color: rgba(255,255,255,0.4);
+  font-weight: bold;
+}
+.img_field{
+  display: inline-block;
+  margin-left: 15px;
+}

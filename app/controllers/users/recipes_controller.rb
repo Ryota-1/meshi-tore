@@ -19,13 +19,14 @@ class Users::RecipesController < ApplicationController
   end
 
   def index
-  	@recipes = Recipe.all
+  	@recipes = Recipe.page(params[:page]).per(8)
+    @search = Recipe.ransack(params[:q])
+    @recipes = @search.result.page(params[:page])
   end
 
   def show
   	@recipe = Recipe.find(params[:id])
     @recipe_comment = RecipeComment.new
-    @recipe_comments = @recipe.recipe_comments
   end
 
   def edit
@@ -46,7 +47,7 @@ class Users::RecipesController < ApplicationController
   end
 
   def genre_recipes
-  	@recipes = Recipe.where(genre_id: params[:id])
+  	@recipes = Recipe.where(genre_id: params[:id]).page(params[:page]).per(8)
   	@genres = Genre.where(is_active: true)
   end
 

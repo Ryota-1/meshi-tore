@@ -2,24 +2,15 @@ class Users::RecipeCommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe_new = Recipe.new
-    @recipe_comment = @recipe.recipe_comments.new(recipe_comment_params)
-    @recipe_comment.user_id = current_user.id
-    if @recipe_comment.save
-      flash[:success] = "Comment was successfully created."
-    else
-      @recipe_comments = RecipeComment.where(id: @recipe)
-    end
+    recipe = Recipe.find(params[:recipe_id])
+    comment = current_user.recipe_comments.new(recipe_comment_params)
+    comment.recipe_id = recipe.id
+    comment.save
+    redirect_to users_recipe_path(recipe)
   end
 
   def destroy
-    @recipe_comment = RecipeComment.find(params[:recipe_id])
-    @recipe = @book_comment.book
-    if @recipe_comment.user != current_user
-      redirect_to request.referer
-    end
-    @recipe_comment.destroy
+
   end
 
   private
