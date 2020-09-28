@@ -12,7 +12,7 @@ Admin.create!(
 )
 
 User.create!(
-    name: 'きんにくん'
-    password: 'testtest'
-    email: 'test@test.com'
-	)
+    name: 'きんにくん',
+    password: 'testtest',
+    email: 'test@test.com',
+)
