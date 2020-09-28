@@ -10,3 +10,9 @@ Admin.create!(
 	email: 'test@test.com',
 	password: 'testtest',
 )
+
+User.creste!(
+    name: 'きんにくん'
+    password: 'testtest'
+    email: 'test@test.com'
+	)
