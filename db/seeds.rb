@@ -11,7 +11,7 @@ Admin.create!(
 	password: 'testtest',
 )
 
-User.creste!(
+User.create!(
     name: 'きんにくん'
     password: 'testtest'
     email: 'test@test.com'
