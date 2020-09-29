@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
 
   def top
-  	@recipes = Recipe.where( 'id >= ?', rand(Recipe.first.id..Recipe.last.id)).limit(4)
+  	@recipes = Recipe.order("RAND()").limit(4)
   	@genres = Genre.where(is_active: true)
   end
 
