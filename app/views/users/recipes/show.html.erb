@@ -3,6 +3,11 @@
     <div class="row">
       <div class="col-md-9 mt-3">
         <div class="col-md-5 mt-5"><%= attachment_image_tag(@recipe, :image, size: "340x280" ) %>
+        <div class="tag-box">
+        <% @recipe.tags.each do |tag| %>
+          <span class="label"><%= tag.name %></span>
+        <% end %>
+        </div>
         <% if user_signed_in? %>
           <table class='iine-table'>
             <tr class="recipe_<%= @recipe.id %>">
