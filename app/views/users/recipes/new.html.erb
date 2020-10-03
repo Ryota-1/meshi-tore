@@ -2,7 +2,7 @@
 	<div class="col-xs-12">
 		<h1 class="head-line title_h1 text-center">レシピ新規投稿</h1>
 
-		<%= form_for(@recipe, url: users_recipes_path, method: :post) do |f| %>
+		<%= form_with model:@recipe, url: users_recipes_path, method: :post,local: true do |f| %>
           <div class="col-xs-4 col-xs-offset-1">
           	<div class="item-image">
           	</div><br>

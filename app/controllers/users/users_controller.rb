@@ -29,6 +29,7 @@ class Users::UsersController < ApplicationController
 
   def update
   	@user = User.find(params[:id])
+    @user.score = Language.get_data(user_params[:introduction])
   	if @user.update(user_params)
   		redirect_to user_path(@user.id)
   	else
